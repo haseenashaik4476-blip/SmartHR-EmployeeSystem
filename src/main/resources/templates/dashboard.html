@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>SmartHR - Dashboard</title>
+<style>
+body{font-family:'Segoe UI',sans-serif;background:#eef2f7;margin:0}
+.navbar{background:linear-gradient(90deg,#1a237e,#3949ab);color:white;padding:16px 35px;display:flex;justify-content:space-between;align-items:center}
+.card-box{display:flex;gap:25px;padding:35px;flex-wrap:wrap}
+.card{background:white;width:300px;padding:25px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.08);text-align:center;transition:0.3s}
+.card:hover{transform:translateY(-5px)}
+.card h1{color:#1a237e;font-size:42px;margin:5px 0}
+.btn{background:#1a237e;color:white;padding:12px 28px;border-radius:10px;text-decoration:none;display:inline-block;font-weight:bold}
+.btn:hover{background:#283593}
+</style>
+</head>
+<body>
+<div class="navbar"><h2 style="margin:0">SmartHR System</h2><a href="/employees" style="color:white;text-decoration:none;font-weight:bold">View All Employees →</a></div>
+<div class="card-box">
+<div class="card"><p>Total Employees</p><h1 th:text="${totalEmployees}">0</h1><p style="color:green">● Active Workforce</p></div>
+<div class="card"><p>Departments</p><h1>6</h1><p>IT, HR, Finance, Sales</p></div>
+<div class="card"><p>Quick Action</p><br><a href="/add-employee" class="btn">+ Add New Employee</a></div>
+</div>
+</body>
+</html>

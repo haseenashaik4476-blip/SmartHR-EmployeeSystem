@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>All Employees - SmartHR</title>
+<style>
+body{font-family:'Segoe UI';background:#f4f6f9;margin:0}
+.nav{background:#1a237e;color:white;padding:15px 30px;display:flex;justify-content:space-between}
+table{width:92%;margin:25px auto;background:white;border-radius:15px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.07);border-collapse:collapse}
+th{background:#1a237e;color:white;padding:16px;font-size:14px} td{padding:14px;text-align:center;border-bottom:1px solid #eee;font-size:14px}
+tr:hover{background:#f8f9ff}
+.btn-add{background:#1a237e;color:white;padding:12px 22px;border-radius:10px;text-decoration:none;float:right;margin:20px 4% 0 0;font-weight:bold}
+.btn-del{background:#ffebee;color:#c62828;padding:7px 14px;border-radius:8px;text-decoration:none;font-weight:bold;border:1px solid #ffcdd2}
+.badge{background:#e8eaf6;color:#1a237e;padding:5px 10px;border-radius:20px;font-size:12px;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="nav"><a href="/" style="color:white;text-decoration:none"><h3 style="margin:0">← Dashboard</h3></a><h3 style="margin:0">Employee Directory</h3></div>
+<a href="/add-employee" class="btn-add">+ Add Employee</a>
+<div style="clear:both"></div>
+<table>
+<tr><th>ID</th><th>Name</th><th>Email</th><th>Department</th><th>Designation</th><th>Salary</th><th>Action</th></tr>
+<tr th:each="emp : ${employees}">
+<td th:text="${emp.id}"></td>
+<td><b th:text="${emp.name}"></b></td>
+<td th:text="${emp.email}"></td>
+<td><span class="badge" th:text="${emp.department}"></span></td>
+<td th:text="${emp.designation}"></td>
+<td>₹<span th:text="${emp.salary}"></span></td>
+<td><a th:href="@{/delete/{id}(id=${emp.id})}" class="btn-del" onclick="return confirm('Delete this employee?')">Delete</a></td>
+</tr>
+</table>
+</body>
+</html>
